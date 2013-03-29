@@ -19,7 +19,7 @@ req = (i, done) ->
         mongo.insert "catalog", items, false, (err) ->
             done if err and  err.code != 11000 then err else null
     else
-      done null
+      done err
 
 count = 1
 async.whilst((-> true), ((ck) -> req count++, ck), ((err) -> console.log err))
